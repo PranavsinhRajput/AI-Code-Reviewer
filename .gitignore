@@ -1,0 +1,25 @@
+# ---- Frontend (Vite + React) ----
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+frontend/*.local
+frontend/.env
+
+# ---- Backend (FastAPI) ----
+backend/venv/
+backend/__pycache__/
+backend/**/__pycache__/
+backend/*.pyc
+backend/.pytest_cache/
+backend/*.egg-info/
+backend/.env
+
+# ---- Editor / OS ----
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# ---- Logs ----
+*.log
+npm-debug.log*
