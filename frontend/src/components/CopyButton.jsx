@@ -14,8 +14,7 @@ export default function CopyButton({ text }) {
     <button
       onClick={handleCopy}
       title={copied ? 'Copied!' : 'Copy code'}
-      className="rounded-md p-1.5 text-text-secondary transition-colors
-                 hover:bg-accent-soft hover:text-accent"
+      className="rounded-md p-1.5 text-muted transition-colors hover:bg-soft-accent hover:text-accent"
     >
       {copied ? <Check size={16} className="text-accent" /> : <Copy size={16} />}
     </button>

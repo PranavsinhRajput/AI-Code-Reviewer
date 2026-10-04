@@ -2,21 +2,25 @@ import { useState } from 'react'
 import Editor, { DiffEditor } from '@monaco-editor/react'
 import CopyButton from './CopyButton.jsx'
 import Loader from './Loader.jsx'
+import { useTheme } from '../context/ThemeContext.jsx'
 
 export default function OutputPanel({ original, code, language, loading }) {
   const [view, setView] = useState('code') // 'code' | 'diff'
+  const { dark } = useTheme()
 
   return (
-    <div className="flex flex-col overflow-hidden rounded-lg border border-border">
-      <div className="flex items-center justify-between border-b border-border bg-surface px-3 py-2">
-        <span className="text-sm font-medium text-text-secondary">Reviewed Code</span>
+    <div className="flex flex-col overflow-hidden rounded-lg border border-line">
+      <div className="flex items-center justify-between border-b border-line bg-elevated px-3 py-2">
+        <span className="text-sm font-medium text-muted">Reviewed Code</span>
         <div className="flex items-center gap-2">
           {code && (
-            <div className="flex rounded-md border border-border bg-white p-0.5 text-xs">
+            <div className="flex rounded-md border border-line bg-panel p-0.5 text-xs">
               <button
                 onClick={() => setView('code')}
                 className={`rounded px-2 py-1 font-medium transition-colors ${
-                  view === 'code' ? 'bg-accent-soft text-accent' : 'text-text-secondary'
+                  view === 'code'
+                    ? 'bg-soft-accent text-accent'
+                    : 'text-muted'
                 }`}
               >
                 Code
@@ -24,7 +28,9 @@ export default function OutputPanel({ original, code, language, loading }) {
               <button
                 onClick={() => setView('diff')}
                 className={`rounded px-2 py-1 font-medium transition-colors ${
-                  view === 'diff' ? 'bg-accent-soft text-accent' : 'text-text-secondary'
+                  view === 'diff'
+                    ? 'bg-soft-accent text-accent'
+                    : 'text-muted'
                 }`}
               >
                 Diff
@@ -46,7 +52,7 @@ export default function OutputPanel({ original, code, language, loading }) {
             language={language}
             original={original}
             modified={code}
-            theme="vs-dark"
+            theme={dark ? 'vs-dark' : 'light'}
             options={{
               readOnly: true,
               renderSideBySide: false,
@@ -62,7 +68,7 @@ export default function OutputPanel({ original, code, language, loading }) {
             height="420px"
             language={language}
             value={code}
-            theme="vs-dark"
+            theme={dark ? 'vs-dark' : 'light'}
             options={{
               readOnly: true,
               fontSize: 14,
@@ -73,7 +79,7 @@ export default function OutputPanel({ original, code, language, loading }) {
           />
         )
       ) : (
-        <div className="flex h-[420px] items-center justify-center px-6 text-center text-sm text-text-secondary">
+        <div className="flex h-[420px] items-center justify-center px-6 text-center text-sm text-muted">
           Your reviewed code will appear here
         </div>
       )}

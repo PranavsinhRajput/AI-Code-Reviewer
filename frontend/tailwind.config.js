@@ -4,23 +4,32 @@ export default {
   theme: {
     extend: {
       colors: {
-        bg: '#FFFFFF',
-        surface: '#FDF7F9',
-        border: '#F0DDE6',
-        'text-primary': '#1C1417',
-        'text-secondary': '#7A6670',
-        accent: '#C6296B',
-        'accent-dark': '#9C1F54',
-        'accent-soft': '#FBE4ED',
-        critical: '#ef4444',
-        warning: '#f59e0b',
+        // Semantic tokens — driven by CSS variables, auto-switch with data-theme
+        app:            'var(--color-app)',
+        panel:          'var(--color-panel)',
+        elevated:       'var(--color-elevated)',
+        sidebar:        'var(--color-sidebar)',
+        primary:        'var(--color-text)',
+        muted:          'var(--color-muted)',
+        line:           'var(--color-line)',
+        accent:         'var(--color-accent)',
+        'accent-strong':'var(--color-accent-strong)',
+        'soft-accent':  'var(--color-soft-accent)',
+        // Severity (unchanged)
+        critical:   '#ef4444',
+        warning:    '#f59e0b',
         suggestion: '#3b82f6',
       },
       backgroundImage: {
-        'accent-gradient': 'linear-gradient(135deg, #E14A82 0%, #9C1F54 100%)',
+        // Orange harvest gradient for the Review Code button
+        'accent-gradient': 'linear-gradient(135deg, hsl(28 100% 52%) 0%, hsl(28 100% 40%) 100%)',
       },
       fontFamily: {
         sans: ['Inter', 'sans-serif'],
+      },
+      boxShadow: {
+        soft:   'var(--shadow-soft)',
+        button: 'var(--shadow-button)',
       },
     },
   },
