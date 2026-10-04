@@ -11,8 +11,8 @@ export default function Toast({ message, onClose }) {
   return (
     <div
       className="fixed bottom-6 right-6 flex items-center gap-2 rounded-lg
-                 border border-border border-l-4 border-l-accent bg-white
-                 px-4 py-3 text-sm text-text-primary shadow-lg"
+                 border border-line border-l-4 border-l-accent
+                 bg-panel px-4 py-3 text-sm text-primary shadow-soft"
     >
       {message}
     </div>

@@ -13,7 +13,7 @@ const COUNT_COLOR = { critical: 'text-critical', warning: 'text-warning', sugges
 export default function IssuesList({ issues }) {
   if (!issues || issues.length === 0) {
     return (
-      <div className="flex items-center gap-2 rounded-lg border border-border bg-surface px-4 py-6 text-sm text-text-secondary">
+      <div className="flex items-center gap-2 rounded-lg border border-line bg-elevated px-4 py-6 text-sm text-muted">
         <CheckCircle2 size={18} className="text-accent" />
         No issues found — looks clean.
       </div>
@@ -32,9 +32,9 @@ export default function IssuesList({ issues }) {
   }, {})
 
   return (
-    <div className="overflow-hidden rounded-lg border border-border">
-      <div className="flex flex-wrap items-center justify-between gap-2 border-b border-border bg-surface px-4 py-3">
-        <span className="text-sm font-medium text-text-secondary">Review Results</span>
+    <div className="overflow-hidden rounded-lg border border-line">
+      <div className="flex flex-wrap items-center justify-between gap-2 border-b border-line bg-elevated px-4 py-3">
+        <span className="text-sm font-medium text-muted">Review Results</span>
         <div className="flex gap-3 text-xs font-medium">
           {Object.entries(counts).map(([severity, count]) => (
             <span key={severity} className={COUNT_COLOR[severity]}>
@@ -44,18 +44,18 @@ export default function IssuesList({ issues }) {
         </div>
       </div>
 
-      <div className="divide-y divide-border">
+      <div className="divide-y divide-line">
         {Object.entries(CATEGORY_META).map(([key, meta]) => {
           const items = grouped[key]
           if (!items) return null
           const Icon = meta.icon
 
           return (
-            <div key={key} className="px-4 py-4">
-              <div className="mb-3 flex items-center gap-2 text-sm font-semibold text-text-primary">
+            <div key={key} className="bg-app px-4 py-4">
+              <div className="mb-3 flex items-center gap-2 text-sm font-semibold text-primary">
                 <Icon size={16} className="text-accent" />
                 {meta.label}
-                <span className="font-normal text-text-secondary">({items.length})</span>
+                <span className="font-normal text-muted">({items.length})</span>
               </div>
               <ul className="space-y-2">
                 {[...items]
@@ -63,11 +63,11 @@ export default function IssuesList({ issues }) {
                   .map((issue, i) => (
                     <li
                       key={i}
-                      className="flex items-start justify-between gap-3 rounded-md bg-surface px-3 py-2"
+                      className="flex items-start justify-between gap-3 rounded-md bg-elevated px-3 py-2"
                     >
-                      <span className="text-sm text-text-primary">
+                      <span className="text-sm text-primary">
                         {issue.line != null && (
-                          <span className="mr-2 rounded bg-white px-1.5 py-0.5 text-xs text-text-secondary">
+                          <span className="mr-2 rounded bg-panel px-1.5 py-0.5 text-xs text-muted border border-line">
                             L{issue.line}
                           </span>
                         )}
